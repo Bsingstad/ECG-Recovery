@@ -2,8 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/downloads/)
-[![Tests](https://github.com/[username]/ECGRecovery/workflows/Tests/badge.svg)](https://github.com/[username]/ECGRecovery/actions)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.[PLACEHOLDER].svg)](https://doi.org/10.5281/zenodo.[PLACEHOLDER])
+[![Tests](https://github.com/[username]/ECGRecovery/workflows/tests/badge.svg)](https://github.com/[username]/ECGRecovery/actions)
+
 
 **Reconstruct complete 12-lead ECGs from paper printouts—fast, accurate, and physiologically consistent.**
 
