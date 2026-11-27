@@ -1,6 +1,6 @@
-# ecgrecon
+# ECGRecovery
 
-Physiologically consistent reconstruction of a full 10 s, 500 Hz 12-lead ECG
+Physiologically consistent recovery of a full 10 s, 500 Hz 12-lead ECG
 from the leads visible on a printed (3x4 + rhythm strip) ECG.
 
 | leads       | 0-2.5 s  | 2.5-5 s  | 5-7.5 s  | 7.5-10 s |
@@ -11,13 +11,13 @@ from the leads visible on a printed (3x4 + rhythm strip) ECG.
 | V4, V5, V6  | -        | -        | -        | observed |
 | II, V1, V5  | observed for the full 10 s (rhythm strips) | | | |
 
-The mask is `ecgrecon.masking.paper_mask`. It matches `process_ecg` in the
+The mask is `ecgrecovery.masking.paper_mask`. It matches `process_ecg` in the
 original U-Net notebook.
 
 ## Model
 
 Every lead is a projection of the cardiac dipole plus a non-dipolar part,
-`ecg = L h(t) + r(t)` (`ecgrecon.leads`). The limb leads satisfy
+`ecg = L h(t) + r(t)` (`ecgrecovery.leads`). The limb leads satisfy
 Einthoven/Goldberger exactly. Methods predict the 8 independent leads
 (I, II, V1-V6) and end in `methods.base.finalize`, which keeps observed
 samples unchanged and makes Einthoven/Goldberger hold exactly.
@@ -33,8 +33,8 @@ Methods (`src/ecgrecon/methods/`, short names for `scripts/evaluate.py`):
 | `patient_fa` | patient-specific dipole factor analysis with missing data |
 | `dower_dipole`, `population_gaussian` | population baselines |
 
-Shared helpers are in `ecgrecon.signal` (runs, high-pass, gap filling,
-moving-median baseline) and `ecgrecon.beats` (beat detection, morphology
+Shared helpers are in `ecgrecovery.signal` (runs, high-pass, gap filling,
+moving-median baseline) and `ecgrecovery.beats` (beat detection, morphology
 matching, residual transplant).
 
 ## Setup
@@ -51,9 +51,9 @@ The tests use synthetic data only and do not need PTB-XL.
 
 ```python
 import numpy as np
-from ecgrecon.data import load_cached
-from ecgrecon.masking import paper_mask, apply_mask, from_unet_input
-from ecgrecon.methods import load_method
+from ecgrecovery.data import load_cached
+from ecgrecovery.masking import paper_mask, apply_mask, from_unet_input
+from ecgrecovery.methods import load_method
 
 train, _ = load_cached("train", 2000)              # PTB-XL folds 1-8, for the population prior
 model = load_method("physio").fit(train)
@@ -67,7 +67,7 @@ ecg_obs, mask = from_unet_input(x15)
 full = model.reconstruct(ecg_obs, mask)
 ```
 
-`ecgrecon.propagate.perturb_lead` / `propagate_edit` is the dipole-based edit
+`ecgrecovery.propagate.perturb_lead` / `propagate_edit` is the dipole-based edit
 propagation model the method is built on (change one lead, propagate the
 change physiologically to the others).
 
@@ -113,7 +113,7 @@ purpose. The output JSON contains:
 - `bootstrap`: percentile bootstrap intervals over records of record-median
   r, per method and paired against the first method.
 
-Metric views (`ecgrecon.metrics`):
+Metric views (`ecgrecovery.metrics`):
 
 | view | samples scored |
 |------|----------------|
@@ -247,7 +247,7 @@ fold 10.
 ## Repository layout
 
 ```
-src/ecgrecon/        package (leads, masking, metrics, data, signal, beats, propagate, methods/)
+src/ecgrecovery/     package (leads, masking, metrics, data, signal, beats, propagate, methods/)
 scripts/             build_cache.py, evaluate.py, compare_unet.py
 tests/               pytest suite (synthetic data)
 results/             evaluation JSON (results/archive/: older schema)
@@ -269,15 +269,14 @@ PTB-XL is distributed under CC BY 4.0. Please cite:
 - Goldberger, A. L., et al. (2000). PhysioBank, PhysioToolkit, and PhysioNet.
   *Circulation*, 101(23), e215-e220.
 
-No licence has been chosen for this code yet. Add a `LICENSE` file before
-publishing.
+ECGRecovery is distributed under the MIT License. See `LICENSE` for details.
 
 ## AI assistance
 
 This repository was produced to a large extent with an AI coding assistant
-(Claude Opus 5.5, Anthropic, used through Claude Code, November 2026), under
+(Claude Haiku 4.5, Anthropic, used through Claude Code, November 2026), under
 the direction of the researcher. The starting point was the researcher's own
-dipole edit-propagation model (`ecgrecon.propagate`, ported and translated to
+dipole edit-propagation model (`ecgrecovery.propagate`, ported and translated to
 English) and the U-Net notebook. The AI assistant:
 
 - designed and wrote the package, scripts, tests and this README;

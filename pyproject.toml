@@ -3,9 +3,9 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ecgrecon"
-version = "0.1.0"
-description = "Physiologically consistent 12-lead ECG reconstruction from a printed-layout subset of leads"
+name = "ecgrecovery"
+version = "1.0.0"
+description = "Physiologically consistent 12-lead ECG recovery from paper printouts using Bayesian ridge regression"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24", "scipy>=1.10"]

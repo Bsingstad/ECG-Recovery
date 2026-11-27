@@ -24,3 +24,4 @@ scratch/
 scratch/**/prof
 scratch/**/log*.txt
 paper.zip
+test-bench-ptb-xl-reconstruct-leads.ipynb
