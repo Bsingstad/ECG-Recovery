@@ -9,7 +9,7 @@ from the leads visible on a printed (3x4 + rhythm strip) ECG.
 | aVR, aVL, aVF | -      | observed | -        | -        |
 | V1, V2, V3  | -        | -        | observed | -        |
 | V4, V5, V6  | -        | -        | -        | observed |
-| II, V1, V5  | observed for the full 10 s (rhythm strips) | | | |
+| II, V1, V5  | <span colspan="4">observed for the full 10 s (rhythm strips)</span> |
 
 The mask is `ecgrecovery.masking.paper_mask`. It matches `process_ecg` in the
 original U-Net notebook.
