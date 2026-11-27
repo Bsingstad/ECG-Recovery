@@ -1,7 +1,13 @@
 # ECGRecovery
 
-Physiologically consistent recovery of a full 10 s, 500 Hz 12-lead ECG
-from the leads visible on a printed (3x4 + rhythm strip) ECG.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/downloads/)
+[![Tests](https://github.com/[username]/ECGRecovery/workflows/Tests/badge.svg)](https://github.com/[username]/ECGRecovery/actions)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.[PLACEHOLDER].svg)](https://doi.org/10.5281/zenodo.[PLACEHOLDER])
+
+**Reconstruct complete 12-lead ECGs from paper printouts—fast, accurate, and physiologically consistent.**
+
+ECGRecovery recovers full 10-second recordings from partial paper layouts (Cabrera format, 2.5-second traces plus rhythm strips) using Bayesian patient-specific learning. It enforces Einthoven's law exactly and outperforms deep learning baselines on PTB-XL, making it ideal for digitizing clinical archives and historical research data.
 
 | leads       | 0-2.5 s  | 2.5-5 s  | 5-7.5 s  | 7.5-10 s |
 |-------------|----------|----------|----------|----------|
