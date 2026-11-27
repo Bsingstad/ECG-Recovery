@@ -1,0 +1,26 @@
+# data and generated artifacts
+ptb_xl/
+cache/
+results/*.npy
+*.npz
+paper/
+results/
+sn-article-template/
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+build/
+dist/
+scratch/
+# binary outputs and experiment artefacts (predictions are ~120 MB each,
+# above GitHub's 100 MB per-file limit)
+*.npy
+*.png
+*.out
+scratch/**/prof
+scratch/**/log*.txt
+paper.zip
