@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/downloads/)
-[![Tests](https://github.com/Bsingstad/ECGRecovery/workflows/Tests/badge.svg)](https://github.com/Bsingstad/ECGRecovery/actions)
+[![Tests](https://github.com/Bsingstad/ECG-Recovery/workflows/Tests/badge.svg)](https://github.com/Bsingstad/ECG-Recovery/actions)
 
 
 **Reconstruct complete 12-lead ECGs from paper printouts—fast, accurate, and physiologically consistent.**
